@@ -22,38 +22,33 @@ public class CVSParser {
 		boolean inQuote = false;
 		while(end <= str.length()){
 			if(end == str.length()){
-				addSubstring(list, start, end, str);
+				list.add(str.substring(start, end));
 				result.add(list);
 				break;
 			}
 			char ch = str.charAt(end);
 			switch(ch){
-				case ',':
-				case '\n':
-					if(inQuote){
-						end++;
-						continue;
-					}
-					addSubstring(list, start, end, str);
-					if(ch == '\n'){
-						result.add(list);
-						list = new ArrayList<>();
-					}
-					start = ++end;
-					break;
-				default:
+			case ',':
+			case '\n':
+				if(inQuote){
 					end++;
-					if(ch == '"'){
-						inQuote = !inQuote;
-					}
-					break;
+					continue;
+				}
+				list.add(str.substring(start, end));
+				if(ch == '\n'){
+					result.add(list);
+					list = new ArrayList<>();
+				}
+				start = ++end;
+				break;
+			case '"':
+				inQuote = !inQuote;
+			default:
+				end++;
+				break;
 			}
 		}
 		return result;
-	}
-	private void addSubstring(List<String> list, int start, int end, String str){
-		if(start == end) return;
-		list.add(str.substring(start, end));
 	}
 	
 	public static void main(String[] args){
