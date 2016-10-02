@@ -50,10 +50,4 @@ public class CVSParser {
 		}
 		return result;
 	}
-	
-	public static void main(String[] args){
-		CVSParser parser = new CVSParser();
-		System.out.println(parser.parse("a,b,c\nd,e,f"));
-		System.out.println(parser.parse("a,b,\"c\nd,e\",f"));
-	}
 }
