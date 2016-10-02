@@ -1,5 +1,3 @@
-package test;
-
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
@@ -12,7 +10,7 @@ import coding.CVSParser;
 public class CVSParserTest {
 
 	@Test
-	public void testDifferntLine() {
+	public void testDifferentLine() {
 		CVSParser parser = new CVSParser();
 		List<List<String>> result = parser.parse("a,b,c\nd,e,f");
 		List<List<String>> expected = Arrays.asList(Arrays.asList("a", "b", "c"), Arrays.asList("d", "e", "f"));
